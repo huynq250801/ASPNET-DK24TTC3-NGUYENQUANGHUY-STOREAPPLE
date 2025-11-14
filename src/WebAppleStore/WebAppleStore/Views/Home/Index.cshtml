@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebAppleStore.Models.HomeViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -30,46 +31,28 @@
     <!-- ========================= -->
     <h2>IPHONE</h2>
     <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/iphone-17-pro-max.png" alt="iPhone 17 Pro Max">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">iPhone 17 Pro Max</h3>
-                <p class="product-price">37.990.000₫</p>
-                <p class="product-price-old">41.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/phone-17.png" alt="iPhone 17">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">iPhone 17</h3>
-                <p class="product-price">24.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/iphone-air.png" alt="iPhone 17 Plus">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">iPhone 17 Plus</h3>
-                <p class="product-price">28.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
+        @if (Model.Iphones != null)
+        {
+            foreach (var p in Model.Iphones)
+            {
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="@p.ImageUrl" alt="@p.Name">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">@p.Name</h3>
+                        <p class="product-price">@p.Price.ToString("N0")₫</p>
+                        @if (p.OldPrice.HasValue)
+                        {
+                            <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
+                        }
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </div>
+            }
+        }
     </div>
 
     <!-- ========================= -->
@@ -77,46 +60,28 @@
     <!-- ========================= -->
     <h2>IPAD</h2>
     <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/ipad-pro-m5-11-inch-wi-f.png" alt="iPad Pro M2">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">iPad Pro M2 11-inch</h3>
-                <p class="product-price">22.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/pad-pro-m5-11-inch-wi-fi-cellular.jpeg" alt="iPad Air 5">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">iPad Air 5</h3>
-                <p class="product-price">15.490.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/ipad-a16-11-inch-wi-fi.png" alt="iPad Gen 10">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">iPad Gen 10</h3>
-                <p class="product-price">9.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
+        @if (Model.Ipads != null)
+        {
+            foreach (var p in Model.Ipads)
+            {
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="@p.ImageUrl" alt="@p.Name">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">@p.Name</h3>
+                        <p class="product-price">@p.Price.ToString("N0")₫</p>
+                        @if (p.OldPrice.HasValue)
+                        {
+                            <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
+                        }
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </div>
+            }
+        }
     </div>
 
     <!-- ========================= -->
@@ -124,46 +89,28 @@
     <!-- ========================= -->
     <h2>WATCH</h2>
     <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/apple-watch-series-11.jpeg" alt="Apple Watch S9">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Apple Watch Series 9</h3>
-                <p class="product-price">9.490.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/apple-watch-ultra-3-gps-cellular-49mm.jpeg" alt="Apple Watch Ultra 2">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Apple Watch Ultra 2</h3>
-                <p class="product-price">21.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/apple-watch-series-10-nhom-gps-cellular-42mm-sport-band_240.png" alt="Apple Watch SE">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Apple Watch SE</h3>
-                <p class="product-price">6.490.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
+        @if (Model.Watches != null)
+        {
+            foreach (var p in Model.Watches)
+            {
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="@p.ImageUrl" alt="@p.Name">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">@p.Name</h3>
+                        <p class="product-price">@p.Price.ToString("N0")₫</p>
+                        @if (p.OldPrice.HasValue)
+                        {
+                            <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
+                        }
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </div>
+            }
+        }
     </div>
 
     <!-- ========================= -->
@@ -171,46 +118,28 @@
     <!-- ========================= -->
     <h2>PHỤ KIỆN</h2>
     <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/airpods-pro-2_240.png" alt="AirPods Pro 2">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">AirPods Pro 2</h3>
-                <p class="product-price">5.990.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/bo-sac-magsafe-1m_240.jpeg" alt="MagSafe Charger">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Sạc MagSafe</h3>
-                <p class="product-price">1.190.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">
-                <img src="imgs/cap-sac-usb-c-to-lightning-cable-1m-fae_240.jpeg" alt="Cáp USB-C Apple">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Cáp USB-C Apple</h3>
-                <p class="product-price">490.000₫</p>
-            </div>
-            <div class="product-actions">
-                <button class="btn-buy">Mua ngay</button>
-            </div>
-        </div>
-
+        @if (Model.Accessories != null)
+        {
+            foreach (var p in Model.Accessories)
+            {
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="@p.ImageUrl" alt="@p.Name">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">@p.Name</h3>
+                        <p class="product-price">@p.Price.ToString("N0")₫</p>
+                        @if (p.OldPrice.HasValue)
+                        {
+                            <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
+                        }
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </div>
+            }
+        }
     </div>
 
 </main>
