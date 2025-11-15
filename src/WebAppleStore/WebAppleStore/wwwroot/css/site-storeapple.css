@@ -407,3 +407,14 @@ img {
     .slider-dots .active-dot {
         background: #333;
     }
+.topic-block-body {
+    background-color: white;
+    text-align: justify;
+    line-height: 24px;
+    font-size: 16px;
+    padding: 20px;
+    /* margin: 20px; */
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+}

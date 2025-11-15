@@ -37,7 +37,18 @@
             {
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="@p.ImageUrl" alt="@p.Name">
+                        <div class="product-card">
+                            <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" style="text-decoration:none; color:inherit;">
+                                <div class="product-image">
+                                    <img src="@p.ImageUrl" alt="@p.Name">
+                                </div>
+                                
+                            </a>
+                            <div class="product-actions">
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">@p.Name</h3>
@@ -54,7 +65,7 @@
             }
         }
     </div>
-
+    <div class="topic-block"><div class="topic-block-body"><p><a href="https://doanhnghiep.shopdunk.com/"><img src="https://shopdunk.com/images/uploaded/Trang%20ch%E1%BB%A7/2.jpeg" width="1200" height="401"></a></p></div></div>
     <!-- ========================= -->
     <!-- IPAD -->
     <!-- ========================= -->
@@ -66,19 +77,28 @@
             {
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="@p.ImageUrl" alt="@p.Name">
+                        <div class="product-card">
+                            <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" style="text-decoration:none; color:inherit;">
+                                <div class="product-image">
+                                    <img src="@p.ImageUrl" alt="@p.Name">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">@p.Name</h3>
+                                    <p class="product-price">@p.Price.ToString("N0")₫</p>
+                                    @if (p.OldPrice.HasValue)
+                                    {
+                                        <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
+                                    }
+                                </div>
+                            </a>
+                            <div class="product-actions">
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">@p.Name</h3>
-                        <p class="product-price">@p.Price.ToString("N0")₫</p>
-                        @if (p.OldPrice.HasValue)
-                        {
-                            <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
-                        }
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn-buy">Mua ngay</button>
-                    </div>
+                    
+                   
                 </div>
             }
         }
@@ -95,7 +115,16 @@
             {
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="@p.ImageUrl" alt="@p.Name">
+                        <div class="product-card">
+                            <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" style="text-decoration:none; color:inherit;">
+                                <div class="product-image">
+                                    <img src="@p.ImageUrl" alt="@p.Name">
+                                </div>
+                                
+                            </a>
+                           
+                        </div>
+
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">@p.Name</h3>
@@ -124,19 +153,27 @@
             {
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="@p.ImageUrl" alt="@p.Name">
+                        <div class="product-card">
+                            <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" style="text-decoration:none; color:inherit;">
+                                <div class="product-image">
+                                    <img src="@p.ImageUrl" alt="@p.Name">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">@p.Name</h3>
+                                    <p class="product-price">@p.Price.ToString("N0")₫</p>
+                                    @if (p.OldPrice.HasValue)
+                                    {
+                                        <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
+                                    }
+                                </div>
+                            </a>
+                            <div class="product-actions">
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">@p.Name</h3>
-                        <p class="product-price">@p.Price.ToString("N0")₫</p>
-                        @if (p.OldPrice.HasValue)
-                        {
-                            <p class="product-price-old">@p.OldPrice.Value.ToString("N0")₫</p>
-                        }
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn-buy">Mua ngay</button>
-                    </div>
+                   
                 </div>
             }
         }

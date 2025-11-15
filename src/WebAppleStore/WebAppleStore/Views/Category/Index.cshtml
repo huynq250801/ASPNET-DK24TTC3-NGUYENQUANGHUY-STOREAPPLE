@@ -1,0 +1,49 @@
+﻿@model List<WebAppleStore.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content" style="padding: 20px 0;">
+
+    <h2 style="margin-bottom: 20px;">@ViewBag.CategoryName</h2>
+
+    <div class="product-grid">
+
+        @foreach (var item in Model)
+        {
+            <div class="product-card">
+                <a href="/Products/Details/@item.Id">
+                    <div class="product-image">
+                        <img src="@item.ImageUrl" alt="@item.Name">
+                    </div>
+                </a>
+
+                <div class="product-info">
+                    <h3 class="product-title">@item.Name</h3>
+
+                    <p class="product-price">
+                        @item.Price.ToString("N0")₫
+                    </p>
+
+                    @if (item.OldPrice != null)
+                    {
+                        <p class="product-price-old">
+                            @item.OldPrice.Value.ToString("N0")₫
+                        </p>
+                    }
+                </div>
+
+                <div class="product-actions">
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+        }
+
+        @if (!Model.Any())
+        {
+            <p>Không có sản phẩm nào trong danh mục này.</p>
+        }
+
+    </div>
+
+</main>

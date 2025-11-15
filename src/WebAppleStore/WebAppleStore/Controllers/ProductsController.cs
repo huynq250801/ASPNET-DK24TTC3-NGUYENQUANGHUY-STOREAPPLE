@@ -10,7 +10,19 @@ namespace WebAppleStore.Controllers
     public class ProductsController : Controller
     {
         private readonly AppleStoreShopContext _context;
+        public async Task<IActionResult> Details(int id)
+        {
+            var product = await _context.Products
+                .Include(p => p.Category)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
         public ProductsController(AppleStoreShopContext context)
         {
             _context = context;

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>@title</title>
-
+    @RenderSection("Styles", required: false)
     <!-- Font + CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,15 +47,15 @@
         <nav class="nav">
             <div class="container">
                 <ul class="menu">
-                    <li><a href="#">iPhone</a></li>
-                    <li><a href="#">iPad</a></li>
-                    <li><a href="#">Mac</a></li>
-                    <li><a href="#">Watch</a></li>
-                    <li><a href="#">Âm thanh</a></li>
-                    <li><a href="#">Phụ kiện</a></li>
-                    <li><a href="#">Dịch vụ</a></li>
-                    <li><a href="#">Tin tức</a></li>
-                    <li><a href="#" class="badge">Khuyến mãi</a></li>
+                    <li><a href="/danh-muc/iphone">iPhone</a></li>
+                    <li><a href="/danh-muc/ipad">iPad</a></li>
+                    <li><a href="/danh-muc/mac">Mac</a></li>
+                    <li><a href="/danh-muc/watch">Watch</a></li>
+                    <li><a href="/danh-muc/am-thanh">Âm thanh</a></li>
+                    <li><a href="/danh-muc/phu-kien">Phụ kiện</a></li>
+                    <li><a href="/dich-vu">Dịch vụ</a></li>
+                    <li><a href="/tin-tuc">Tin tức</a></li>
+                    <li><a href="/khuyen-mai" class="badge">Khuyến mãi</a></li>
                 </ul>
             </div>
         </nav>

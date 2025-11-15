@@ -1,0 +1,194 @@
+﻿@model WebAppleStore.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = Model.Name;
+}
+
+<main class="main-content product-detail-page">
+
+    <nav class="breadcrumb">
+        <a href="/">Trang chủ</a> /
+        <a href="/Products">Sản phẩm</a> /
+        <span>@Model.Name</span>
+    </nav>
+
+    <div class="product-detail-container">
+        <!-- Ảnh sản phẩm -->
+        <div class="product-detail-image">
+            <img src="@Model.ImageUrl" alt="@Model.Name" style="width:80%; border-radius:12px;" />
+        </div>
+
+        <!-- Thông tin sản phẩm -->
+        <div class="product-detail-info">
+            <h1 class="product-detail-title">@Model.Name</h1>
+
+            <div class="product-detail-prices">
+                <span class="product-detail-price">@Model.Price.ToString("N0")₫</span>
+                @if (Model.OldPrice.HasValue)
+                {
+                    <span class="product-detail-price-old">@Model.OldPrice.Value.ToString("N0")₫</span>
+                }
+            </div>
+
+            @if (Model.Category != null)
+            {
+                <div class="product-detail-meta">
+                    <span>Danh mục: <strong>@Model.Category.Name</strong></span>
+                </div>
+            }
+
+            <div class="product-detail-stock">
+                @if (Model.Stock > 0)
+                {
+                    <span class="in-stock">Còn hàng (@Model.Stock)</span>
+                }
+                else
+                {
+                    <span class="out-of-stock">Hết hàng</span>
+                }
+            </div>
+
+            <div class="product-detail-actions">
+                <button class="btn-buy-now">Mua ngay</button>
+                <button class="btn-add-cart">Thêm vào giỏ</button>
+            </div>
+
+            <div class="product-detail-desc">
+                <h3>Mô tả sản phẩm</h3>
+                @if (!string.IsNullOrWhiteSpace(Model.Description))
+                {
+                    <p>@Model.Description</p>
+                }
+                else
+                {
+                    <p>Đang cập nhật mô tả sản phẩm...</p>
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+
+@section Styles {
+    <style>
+        .product-detail-page {
+            padding: 20px 0;
+        }
+
+        .breadcrumb {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+            .breadcrumb a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .breadcrumb a:hover {
+                    text-decoration: underline;
+                }
+
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .product-detail-title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-detail-prices {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .product-detail-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e53935;
+        }
+
+        .product-detail-price-old {
+            font-size: 16px;
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .product-detail-meta {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .product-detail-stock .in-stock {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .product-detail-stock .out-of-stock {
+            color: #d32f2f;
+            font-weight: 600;
+        }
+
+        .product-detail-actions {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-buy-now,
+        .btn-add-cart {
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-buy-now {
+            background: #0071e3;
+            color: #fff;
+        }
+
+            .btn-buy-now:hover {
+                background: #005bb5;
+            }
+
+        .btn-add-cart {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+            .btn-add-cart:hover {
+                background: #e0e0e0;
+            }
+
+        .product-detail-desc h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .product-detail-desc p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        @@media (max-width: 768px) {
+            .product-detail-container
+
+        {
+            grid-template-columns: 1fr;
+        }
+
+        }
+    </style>
+}
