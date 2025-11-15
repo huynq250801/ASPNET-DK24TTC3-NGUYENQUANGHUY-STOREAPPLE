@@ -66,7 +66,7 @@ img {
 }
 
 .iconbtn {
-    background: #1b1c1f;
+    background: #ffffff;
     border: 1px solid var(--border);
     padding: 8px 10px;
     border-radius: 12px;
@@ -93,7 +93,7 @@ img {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--bg-soft);
+    background: #515154;
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(8px)
 }
@@ -117,7 +117,7 @@ img {
 .search {
     display: flex;
     align-items: center;
-    background: #1b1c1f;
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 10px 14px
@@ -131,9 +131,9 @@ img {
 
 /* NAV */
 .nav {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: #111114
+       border-top: 1px solid #515154;
+    border-bottom: 1px solid #515154;
+    background: #515154;
 }
 
 .menu {
