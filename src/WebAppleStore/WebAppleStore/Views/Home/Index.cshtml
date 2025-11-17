@@ -44,9 +44,7 @@
                                 </div>
                                 
                             </a>
-                            <div class="product-actions">
-                                <button class="btn-buy">Mua ngay</button>
-                            </div>
+                           
                         </div>
 
                     </div>
@@ -59,7 +57,14 @@
                         }
                     </div>
                     <div class="product-actions">
-                        <button class="btn-buy">Mua ngay</button>
+                        <a asp-controller="Checkout"
+                           asp-action="Index"
+                           asp-route-id="@p.Id"
+                           class="btn-buy"
+                           style="display:inline-block; text-decoration:none; text-align:center;">
+                            Mua ngay
+                        </a>
+
                     </div>
                 </div>
             }
@@ -92,7 +97,14 @@
                                 </div>
                             </a>
                             <div class="product-actions">
-                                <button class="btn-buy">Mua ngay</button>
+                                <a asp-controller="Checkout"
+                                   asp-action="Index"
+                                   asp-route-id="@p.Id"
+                                   class="btn-buy"
+                                   style="display:inline-block; text-decoration:none; text-align:center;">
+                                    Mua ngay
+                                </a>
+
                             </div>
                         </div>
 
@@ -135,7 +147,14 @@
                         }
                     </div>
                     <div class="product-actions">
-                        <button class="btn-buy">Mua ngay</button>
+                        <a asp-controller="Checkout"
+                           asp-action="Index"
+                           asp-route-id="@p.Id"
+                           class="btn-buy"
+                           style="display:inline-block; text-decoration:none; text-align:center;">
+                            Mua ngay
+                        </a>
+
                     </div>
                 </div>
             }
@@ -168,7 +187,14 @@
                                 </div>
                             </a>
                             <div class="product-actions">
-                                <button class="btn-buy">Mua ngay</button>
+                                <a asp-controller="Checkout"
+                                   asp-action="Index"
+                                   asp-route-id="@p.Id"
+                                   class="btn-buy"
+                                   style="display:inline-block; text-decoration:none; text-align:center;">
+                                    Mua ngay
+                                </a>
+
                             </div>
                         </div>
 

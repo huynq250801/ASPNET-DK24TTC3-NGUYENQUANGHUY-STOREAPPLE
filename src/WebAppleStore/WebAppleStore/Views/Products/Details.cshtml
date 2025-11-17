@@ -49,7 +49,14 @@
             </div>
 
             <div class="product-detail-actions">
-                <button class="btn-buy-now">Mua ngay</button>
+                <a asp-controller="Checkout"
+                   asp-action="Index"
+                   asp-route-id="@Model.Id"
+                   class="btn-buy-now"
+                   style="display:inline-block; text-decoration:none; text-align:center;">
+                    Mua ngay
+                </a>
+
                 <button class="btn-add-cart">Thêm vào giỏ</button>
             </div>
 

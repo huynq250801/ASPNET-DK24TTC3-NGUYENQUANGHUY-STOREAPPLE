@@ -19,6 +19,7 @@ namespace WebAppleStore.Models
         public required string Status { get; set; }
         public decimal TotalAmount { get; set; }
 
-        public ICollection<OrderItem>? OrderItems { get; set; }
+        // LƯU Ý: không có dấu ? và KHỞI TẠO LIST
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }
