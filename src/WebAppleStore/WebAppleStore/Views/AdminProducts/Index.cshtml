@@ -1,0 +1,165 @@
+﻿@model List<WebAppleStore.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Quản lý sản phẩm";
+}
+
+<main class="main-content" style="padding: 24px 0; background: #f5f5f7;">
+
+    <div class="container" style="max-width: 1120px;">
+        <!-- Header -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <div>
+                <h2 style="margin:0; font-weight:600;">Quản lý sản phẩm</h2>
+                <p style="margin:4px 0 0; color:#666;">
+                    Tổng: <strong>@Model.Count</strong> sản phẩm
+                </p>
+            </div>
+            <a asp-controller="AdminProducts"
+               asp-action="Create"
+               class="btn btn-primary"
+               style="border-radius:999px; padding:8px 20px; font-weight:500;">
+                + Thêm sản phẩm
+            </a>
+        </div>
+
+        <!-- Card Wrapper -->
+        <div style="background:#fff; border-radius:14px; padding:18px 20px;
+                    box-shadow:0 4px 16px rgba(0,0,0,0.04); border:1px solid #e5e5e5;">
+
+            <!-- Search (optional – tạm để static) -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                <div style="font-weight:500;">Danh sách sản phẩm</div>
+                <div>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Tìm theo tên (chưa xử lý)..."
+                           style="height:32px; font-size:14px; max-width:220px;">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead style="background:#f8f9fa;">
+                        <tr>
+                            <th style="width:70px;">Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th style="width:140px;">Danh mục</th>
+                            <th style="width:140px;">Giá</th>
+                            <th style="width:110px;">Trạng thái</th>
+                            <th style="width:160px; text-align:center;">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            @foreach (var p in Model)
+                            {
+                                <tr>
+                                    <!-- Ảnh -->
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(p.ImageUrl))
+                                        {
+                                            <img src="@p.ImageUrl"
+                                                 alt="@p.Name"
+                                                 style="width:56px; height:56px; object-fit:cover; border-radius:8px; border:1px solid #eee;" />
+                                        }
+                                        else
+                                        {
+                                            <div style="width:56px; height:56px; border-radius:8px; border:1px dashed #ccc;
+                                                                display:flex; align-items:center; justify-content:center; font-size:11px; color:#999;">
+                                                No image
+                                            </div>
+                                        }
+                                    </td>
+
+                                    <!-- Tên + ID -->
+                                    <td>
+                                        <div style="font-weight:500;">@p.Name</div>
+                                        <div style="font-size:12px; color:#999;">ID: @p.Id</div>
+                                    </td>
+
+                                    <!-- Danh mục -->
+                                    <td>
+                                        @if (p.Category != null)
+                                        {
+                                            <span style="font-size:13px; padding:3px 8px; border-radius:999px;
+                                                                 background:#f0f4ff; color:#2251ff;">
+                                                @p.Category.Name
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span style="font-size:13px; color:#999;">Chưa gán</span>
+                                        }
+                                    </td>
+
+                                    <!-- Giá -->
+                                    <td>
+                                        <div style="font-weight:600; color:#d40000;">
+                                            @p.Price.ToString("N0")₫
+                                        </div>
+
+                                        @if (p.OldPrice.HasValue)
+                                        {
+                                            <div style="font-size:12px; color:#999; text-decoration:line-through;">
+                                                @p.OldPrice.Value.ToString("N0")₫
+                                            </div>
+                                        }
+                                    </td>
+
+                                    <!-- Trạng thái -->
+                                    <td>
+                                        @if (p.IsActive)
+                                        {
+                                            <span style="display:inline-block; font-size:12px; padding:3px 10px;
+                                                                 border-radius:999px; background:#e6f4ea; color:#137333;">
+                                                Đang bán
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span style="display:inline-block; font-size:12px; padding:3px 10px;
+                                                                 border-radius:999px; background:#fce8e6; color:#c5221f;">
+                                                Ẩn
+                                            </span>
+                                        }
+                                    </td>
+
+                                    <!-- Action -->
+                                    <td style="text-align:center;">
+                                        <a asp-controller="AdminProducts"
+                                           asp-action="Edit"
+                                           asp-route-id="@p.Id"
+                                           class="btn btn-sm btn-outline-secondary"
+                                           style="margin-right:6px; min-width:64px;">
+                                            Sửa
+                                        </a>
+
+                                        <a asp-controller="AdminProducts"
+                                           asp-action="Delete"
+                                           asp-route-id="@p.Id"
+                                           class="btn btn-sm btn-outline-danger"
+                                           style="min-width:64px;"
+                                           onclick="return confirm('Bạn chắc chắn muốn xóa sản phẩm này?');">
+                                            Xóa
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center" style="color:#777; padding:18px 0;">
+                                    Chưa có sản phẩm nào.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>

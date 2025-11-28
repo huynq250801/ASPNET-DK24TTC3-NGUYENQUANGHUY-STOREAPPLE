@@ -1,0 +1,87 @@
+﻿@model WebAppleStore.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Thêm sản phẩm";
+}
+
+<main class="main-content" style="padding:24px 0; background:#f5f5f7;">
+    <div class="container" style="max-width:800px;">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+            <div>
+                <h2 style="margin:0; font-weight:600;">Thêm sản phẩm mới</h2>
+                <p style="margin:4px 0 0; color:#666; font-size:14px;">
+                    Nhập đầy đủ thông tin rồi bấm <strong>Lưu</strong> để tạo sản phẩm.
+                </p>
+            </div>
+            <a href="/AdminProducts" class="btn btn-outline-secondary">
+                ← Quay lại danh sách
+            </a>
+        </div>
+
+        <div style="background:#fff; border-radius:14px; padding:20px 22px;
+                    box-shadow:0 4px 16px rgba(0,0,0,0.04); border:1px solid #e5e5e5;">
+
+            <form asp-action="Create" asp-controller="AdminProducts" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+                <!-- Tên sản phẩm -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Tên sản phẩm</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Giá & Giá cũ -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Price" class="form-label">Giá (₫)</label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="OldPrice" class="form-label">Giá cũ (nếu có)</label>
+                        <input asp-for="OldPrice" class="form-control" />
+                        <span asp-validation-for="OldPrice" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Danh mục -->
+                <div class="mb-3">
+                    <label class="form-label">Danh mục</label>
+                    <select asp-for="CategoryId" class="form-control">
+                        @foreach (var cat in ViewBag.Categories)
+                        {
+                            <option value="@cat.Id">@cat.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <!-- Ảnh -->
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label">Đường dẫn ảnh (ImageUrl)</label>
+                    <input asp-for="ImageUrl" class="form-control" placeholder="/imgs/iphone-17.png hoặc https://..." />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                <!-- Mô tả -->
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">Mô tả</label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Trạng thái -->
+                <div class="mb-3 form-check">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label">Đang bán</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="min-width:140px;">Lưu sản phẩm</button>
+                <a href="/AdminProducts" class="btn btn-secondary ms-2">Hủy</a>
+            </form>
+        </div>
+
+    </div>
+</main>

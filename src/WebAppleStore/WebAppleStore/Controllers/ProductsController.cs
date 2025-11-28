@@ -32,12 +32,13 @@ namespace WebAppleStore.Controllers
         {
             var items = await _context.Products
                 .Include(x => x.Category)
-                .OrderBy(x => x.Category.SortOrder)
+                .OrderBy(x => x.Category != null ? x.Category.SortOrder : int.MaxValue)
                 .ThenBy(x => x.Name)
                 .ToListAsync();
 
             return View(items);
         }
+
 
         public IActionResult Create()
         {

@@ -3,7 +3,7 @@ using WebAppleStore.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ??ng ký DbContext
+// Dang ký DbContext
 builder.Services.AddDbContext<AppleStoreShopContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("AppleStoreShopContext")
