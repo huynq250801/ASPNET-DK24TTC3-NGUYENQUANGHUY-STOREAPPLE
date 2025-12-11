@@ -22,14 +22,14 @@ namespace WebAppleStore.Controllers
                 .OrderByDescending(p => p.Id)
                 .ToListAsync();
 
-            return View(products); // Views/AdminProducts/Index.cshtml
+            return View(products);
         }
 
         // CREATE (GET)
         public IActionResult Create()
         {
             ViewBag.Categories = _context.Categories.ToList();
-            return View(); // Views/AdminProducts/Create.cshtml
+            return View();
         }
 
         // CREATE (POST)
@@ -43,22 +43,24 @@ namespace WebAppleStore.Controllers
                 return View(model);
             }
 
+            model.CreatedAt = DateTime.Now;  // Fix lỗi datetime
             _context.Products.Add(model);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
-        // 🔹 EDIT (GET) – dùng khi bạn bấm link /AdminProducts/Edit/12
+        // EDIT (GET)
         public async Task<IActionResult> Edit(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null) return NotFound();
 
             ViewBag.Categories = _context.Categories.ToList();
-            return View(product); // Views/AdminProducts/Edit.cshtml
+            return View(product);
         }
 
-        // 🔹 EDIT (POST) – submit form sửa
+        // EDIT (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Product model)
@@ -69,8 +71,10 @@ namespace WebAppleStore.Controllers
                 return View(model);
             }
 
+            model.UpdatedAt = DateTime.Now; 
             _context.Products.Update(model);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
